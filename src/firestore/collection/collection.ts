@@ -1,10 +1,7 @@
 import { DocumentChangeType, CollectionReference, Query, DocumentReference } from '@firebase/firestore-types';
-import { Observable } from 'rxjs/Observable';
-import { Subscriber } from 'rxjs/Subscriber';
+import { Observable, Subscriber } from 'rxjs';
 import { fromCollectionRef } from '../observable/fromRef';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
-
+import { map, filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 import { QueryFn, AssociatedReference, DocumentChangeAction } from '../interfaces';

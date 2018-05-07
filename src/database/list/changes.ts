@@ -1,15 +1,9 @@
 import { fromRef } from '../observable/fromRef';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { DatabaseQuery, ChildEvent, AngularFireAction, SnapshotAction } from '../interfaces';
 import { isNil } from '../utils';
 
-import 'rxjs/add/operator/scan';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/distinctUntilChanged';
+import { scan, merge, of, switchMap, filter, delay, distinctUntilChanged } from 'rxjs/operators';
 
 export function listChanges<T>(ref: DatabaseQuery, events: ChildEvent[]): Observable<SnapshotAction[]> {
   return fromRef(ref, 'value', 'once').switchMap(snapshotAction => {
@@ -31,8 +25,8 @@ function positionFor(changes: SnapshotAction[], key) {
 }
 
 function positionAfter(changes: SnapshotAction[], prevKey?: string) {
-  if(isNil(prevKey)) { 
-    return 0; 
+  if(isNil(prevKey)) {
+    return 0;
   } else {
     const i = positionFor(changes, prevKey);
     if( i === -1) {
@@ -44,7 +38,7 @@ function positionAfter(changes: SnapshotAction[], prevKey?: string) {
 }
 
 function buildView(current, action) {
-  const { payload, type, prevKey, key } = action; 
+  const { payload, type, prevKey, key } = action;
   const currentKeyPosition = positionFor(current, key);
   const afterPreviousKeyPosition = positionAfter(current, prevKey);
   switch (action.type) {

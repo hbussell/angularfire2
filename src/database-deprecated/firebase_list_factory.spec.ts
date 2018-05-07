@@ -9,12 +9,7 @@ import * as utils from './utils';
 import { Query, AFUnwrappedDataSnapshot } from './interfaces';
 import { Subscription, Observable, Subject } from 'rxjs';
 import { COMMON_CONFIG } from './test-config';
-import { _do } from 'rxjs/operator/do';
-import { map } from 'rxjs/operator/map';
-import { skip } from 'rxjs/operator/skip';
-import { take } from 'rxjs/operator/take';
-import { toArray } from 'rxjs/operator/toArray';
-import { toPromise } from 'rxjs/operator/toPromise';
+import { _do, map, skip, take, toArray, toPromise } from 'rxjs/operators';
 
 const questionsPath = 'questions';
 

@@ -1,10 +1,8 @@
 import { DocumentReference, Query, QuerySnapshot, DocumentSnapshot } from '@firebase/firestore-types';
-import { Observable } from 'rxjs/Observable';
-import { Subscriber } from 'rxjs/Subscriber';
-import { Action, Reference } from '../interfaces';
+import { Observable, Subscriber } from 'rxjs';
+import { map, share } from 'rxjs/operators';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/share';
+import { Action, Reference } from '../interfaces';
 
 function _fromRef<T, R>(ref: Reference<T>): Observable<R> {
   return new Observable(subscriber => {

@@ -1,9 +1,8 @@
-import { DatabaseQuery, DatabaseSnapshot, ListenEvent, AngularFireAction } from '../interfaces';
-import { Observable } from 'rxjs/Observable';
 import { FirebaseZoneScheduler } from 'angularfire2';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/share';
+import { Observable } from 'rxjs';
+import { map, delay, share } from 'rxjs/operators';
+
+import { DatabaseQuery, DatabaseSnapshot, ListenEvent, AngularFireAction } from '../interfaces';
 
 interface SnapshotPrevKey {
   snapshot: DatabaseSnapshot;

@@ -6,11 +6,10 @@ import { AngularFirestoreCollection } from './collection';
 import { QueryFn } from '../interfaces';
 
 import { FirebaseApp as FBApp } from '@firebase/app-types';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subscription } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { of } from 'rxjs/observable/of';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/skip';
+import { skip } from 'rxjs/operators';
 
 import { TestBed, inject } from '@angular/core/testing';
 import { COMMON_CONFIG } from '../test-config';

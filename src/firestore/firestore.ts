@@ -1,12 +1,10 @@
 import { InjectionToken, NgZone, PLATFORM_ID } from '@angular/core';
 import { FirebaseFirestore, CollectionReference, DocumentReference } from '@firebase/firestore-types';
 
-import { Observable } from 'rxjs/Observable';
-import { Subscriber } from 'rxjs/Subscriber';
+import { Observable, Subscriber } from 'rxjs;
 import { from } from 'rxjs/observable/from';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { map, catch } from 'rxjs/operators';
 
 import { FirebaseOptions } from '@firebase/app-types';
 import { Injectable, Inject, Optional } from '@angular/core';

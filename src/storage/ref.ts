@@ -1,7 +1,6 @@
 import { SettableMetadata, UploadMetadata, Reference, StringFormat } from '@firebase/storage-types';
 import { createUploadTask, AngularFireUploadTask } from './task';
-import { Observable } from 'rxjs/Observable';
-import { from } from 'rxjs/observable/from';
+import { Observable, fromPromise } from 'rxjs';
 import { FirebaseZoneScheduler } from 'angularfire2';
 
 export interface AngularFireStorageReference {
@@ -23,17 +22,17 @@ export function createStorageRef(ref: Reference, scheduler: FirebaseZoneSchedule
   return {
     getDownloadURL: () => scheduler.keepUnstableUntilFirst(
       scheduler.runOutsideAngular(
-        from(ref.getDownloadURL())
+        fromPromise(ref.getDownloadURL())
       )
     ),
     getMetadata: () => scheduler.keepUnstableUntilFirst(
       scheduler.runOutsideAngular(
-        from(ref.getMetadata())
+        fromPromise(ref.getMetadata())
       )
     ),
-    delete: () => from(ref.delete()),
+    delete: () => fromPromise(ref.delete()),
     child: (path: string) => createStorageRef(ref.child(path), scheduler),
-    updateMetatdata: (meta: SettableMetadata) => from(ref.updateMetadata(meta)),
+    updateMetatdata: (meta: SettableMetadata) => fromPromise(ref.updateMetadata(meta)),
     put: (data: any, metadata?: UploadMetadata) => {
       const task = ref.put(data, metadata);
       return createUploadTask(task);

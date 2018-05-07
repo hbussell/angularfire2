@@ -1,7 +1,7 @@
 import { FirebaseAuth, User } from '@firebase/auth-types';
 import { FirebaseOptions } from '@firebase/app-types';
 import { Injectable, Inject, Optional, NgZone, PLATFORM_ID } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { FirebaseAppConfig, FirebaseAppName, _firebaseAppFactory, FirebaseZoneScheduler } from 'angularfire2';
 
