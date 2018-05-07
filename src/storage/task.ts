@@ -1,7 +1,7 @@
 import { UploadTaskSnapshot, UploadTask } from '@firebase/storage-types';
 import { fromTask } from './observable/fromTask';
 import { Observable, fromPromise } from 'rxjs';
-import { map, filter } from 'rxjs/operatorss';
+import { map, filter } from 'rxjs/operators';
 
 export interface AngularFireUploadTask {
   task: UploadTask,

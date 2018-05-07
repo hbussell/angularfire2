@@ -1,13 +1,11 @@
 import { DatabaseQuery, ChildEvent, DatabaseSnapshot, AngularFireAction, SnapshotAction } from '../interfaces';
 import { stateChanges } from './state-changes';
 import { Observable } from 'rxjs';
+import { skipWhile, withLatestFrom, map } from 'rxjs/operators';
 import { DataSnapshot } from '@firebase/database-types';
 import { fromRef } from '../observable/fromRef';
 import { AngularFireDatabase } from '../database';
 
-import 'rxjs/add/operator/skipWhile';
-import 'rxjs/add/operator/withLatestFrom';
-import 'rxjs/add/operator/map';
 
 export function createAuditTrail(query: DatabaseQuery, afDatabase: AngularFireDatabase) {
   return (events?: ChildEvent[]) => afDatabase.scheduler.keepUnstableUntilFirst(

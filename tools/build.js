@@ -181,7 +181,7 @@ function generateBundle(entry, { dest, globals, moduleName }) {
 
 function createFirebaseBundles(featurePaths, globals) {
   return Object.keys(featurePaths).map(feature => {
-    return generateBundle(featurePaths[feature], { 
+    return generateBundle(featurePaths[feature], {
       dest: `${process.cwd()}/dist/bundles/${feature}.js`,
       globals,
       moduleName: `firebase.${feature}`

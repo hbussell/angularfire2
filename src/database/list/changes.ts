@@ -1,9 +1,9 @@
 import { fromRef } from '../observable/fromRef';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { DatabaseQuery, ChildEvent, AngularFireAction, SnapshotAction } from '../interfaces';
 import { isNil } from '../utils';
 
-import { scan, merge, of, switchMap, filter, delay, distinctUntilChanged } from 'rxjs/operators';
+import { scan, merge, switchMap, filter, delay, distinctUntilChanged } from 'rxjs/operators';
 
 export function listChanges<T>(ref: DatabaseQuery, events: ChildEvent[]): Observable<SnapshotAction[]> {
   return fromRef(ref, 'value', 'once').switchMap(snapshotAction => {
